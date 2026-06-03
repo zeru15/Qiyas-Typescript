@@ -6,3 +6,22 @@ export interface Student {
     enrollmentDate: Temporal.Instant;
     gpa?: number;
 }
+
+export function isStudent(value: unknown): value is Student {
+    return (
+        typeof value === "object" &&
+        value !== null &&
+        "id" in value &&
+        "name" in value &&
+        typeof (value as Record<string, unknown>).id === "string" &&
+        typeof (value as Record<string, unknown>).name === "string"
+    );
+}
+
+// export function parseStudent(raw: undefined): Student {
+//     if (typeof raw !== "object" || raw === null) {
+//         throw new TypeError(
+//             'Expected an object, received $(raw '
+//         )
+//     }
+// }

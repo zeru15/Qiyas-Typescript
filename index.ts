@@ -1,5 +1,5 @@
 import {Temporal} from "@js-temporal/polyfill";
-import {Student} from "./models/student.model";
+import {Student, isStudent } from "./models/student.model";
 
 const student: Student = {
     id: "STU-001",
@@ -10,3 +10,21 @@ const student: Student = {
 // student.id = "STU-999";
 // console.log(student.gpa.toFixed(2));
 console.log(student.gpa?.toFixed(2)?? "Not Yet Graded");
+
+
+function processStudent(raw: unknown) {
+    if (isStudent(raw)) {
+        const gpaDisplay = raw.gpa?.toFixed(2) ?? "Not Yet Graded";
+        console.log(`Student ${raw.name} GPA:${gpaDisplay}`);
+    } else {
+        console.error("Invalid student data received");
+    }
+}
+
+processStudent({
+    id: "STU-001",
+    name: "Hana",
+    gpa: 3.7
+})
+
+processStudent(42);
