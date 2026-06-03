@@ -1,5 +1,5 @@
 import {Temporal} from "@js-temporal/polyfill";
-import {Student, isStudent } from "./models/student.model";
+import {Student, isStudent, parseStudent } from "./models/student.model";
 
 const student: Student = {
     id: "STU-001",
@@ -28,3 +28,7 @@ processStudent({
 })
 
 processStudent(42);
+
+console.log(parseStudent({id: "STU-001", name: "Hana"}));
+
+console.log(parseStudent({id: 42, name: "Test"}));
