@@ -1,6 +1,7 @@
 import {Temporal} from "@js-temporal/polyfill";
 import {Student, isStudent, parseStudent } from "./models/student.model";
 import { AssessmentItem, calculateGrade } from "./models/assessment.model";
+import { EnrollmentStatus, describeEnrollment } from "./models/enrollment.model";
 
 const student: Student = {
     id: "STU-001",
@@ -53,3 +54,13 @@ const lab: AssessmentItem = {
 
 console.log(`QUIZ Grade: ${calculateGrade(quiz)}%`);
 console.log(`LAB Grade: ${calculateGrade(lab)}%`);
+
+
+const pending: EnrollmentStatus = {
+    status: "PENDING",
+    requestedAt: Temporal.Now.instant(),
+    studentId: "STU-001",
+    courseId: "CRS-101"
+}
+
+console.log(describeEnrollment(pending));

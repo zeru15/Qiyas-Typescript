@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const polyfill_1 = require("@js-temporal/polyfill");
 const assessment_model_1 = require("./models/assessment.model");
+const enrollment_model_1 = require("./models/enrollment.model");
 const student = {
     id: "STU-001",
     name: "Hana Tadesse",
@@ -42,3 +43,10 @@ const lab = {
 };
 console.log(`QUIZ Grade: ${(0, assessment_model_1.calculateGrade)(quiz)}%`);
 console.log(`LAB Grade: ${(0, assessment_model_1.calculateGrade)(lab)}%`);
+const pending = {
+    status: "PENDING",
+    requestedAt: polyfill_1.Temporal.Now.instant(),
+    studentId: "STU-001",
+    courseId: "CRS-101"
+};
+console.log((0, enrollment_model_1.describeEnrollment)(pending));
