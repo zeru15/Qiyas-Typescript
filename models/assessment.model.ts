@@ -2,16 +2,16 @@ export interface Quiz {
     readonly id: string,
     kind: "quiz",
     title: string,
-    correctAnswers: string,
-    totalQuestions: string
+    correctAnswers: number,
+    totalQuestions: number
 }
 
 export interface LabAssignment {
     readonly id: string,
     kind: "lab",
     title: string,
-    functionalityScore: string,
-    codeQualityScore: string
+    functionalityScore: number,
+    codeQualityScore: number
 }
 
 export type AssessmentItem = Quiz | LabAssignment;
