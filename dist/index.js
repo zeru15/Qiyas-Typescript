@@ -62,3 +62,22 @@ const studentRes = {
     fetchedAt: polyfill_1.Temporal.Now.instant(),
 };
 console.log((0, api_response_model_1.renderResponse)(studentRes, (s) => `${s.name} GPA: ${s.gpa ?? "N/A"}`));
+const courseListRes = {
+    status: "success",
+    data: [
+        {
+            id: "CRS-101",
+            title: "Web Development Fundamentals",
+            capacity: 30,
+            startDate: polyfill_1.Temporal.PlainDate.from("2026-09-01"),
+        },
+        {
+            id: "CRS-102",
+            title: "App Development Fundamentals",
+            capacity: 30,
+            startDate: polyfill_1.Temporal.PlainDate.from("2026-09-01"),
+        },
+    ],
+    fetchedAt: polyfill_1.Temporal.Now.instant(),
+};
+console.log((0, api_response_model_1.renderResponse)(courseListRes, (courses) => courses.map((c) => c.title).join(",")));
