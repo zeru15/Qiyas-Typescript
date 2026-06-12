@@ -2,6 +2,7 @@ import {Temporal} from "@js-temporal/polyfill";
 import {Student, isStudent, parseStudent } from "./models/student.model";
 import { AssessmentItem, calculateGrade } from "./models/assessment.model";
 import { EnrollmentStatus, describeEnrollment } from "./models/enrollment.model";
+import { ApiResponse, renderResponse } from "./models/api-response.model";
 
 const student: Student = {
     id: "STU-001",
@@ -64,3 +65,22 @@ const pending: EnrollmentStatus = {
 }
 
 console.log(describeEnrollment(pending));
+
+
+
+
+
+const studentRes: ApiResponse<Student> = {
+    status: "success",
+    data: {
+        id: "STU-001",
+        name: "Dawit Bekele",
+        enrollmentDate: Temporal.Now.instant(),
+        gpa: 3.4
+    },
+    fetchedAt: Temporal.Now.instant(),
+}
+
+console.log(renderResponse(studentRes, (s) => `${s.name} GPA: ${s.gpa ?? "N/A"}`))
+
+

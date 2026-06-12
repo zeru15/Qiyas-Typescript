@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const polyfill_1 = require("@js-temporal/polyfill");
 const assessment_model_1 = require("./models/assessment.model");
 const enrollment_model_1 = require("./models/enrollment.model");
+const api_response_model_1 = require("./models/api-response.model");
 const student = {
     id: "STU-001",
     name: "Hana Tadesse",
@@ -50,3 +51,14 @@ const pending = {
     courseId: "CRS-101"
 };
 console.log((0, enrollment_model_1.describeEnrollment)(pending));
+const studentRes = {
+    status: "success",
+    data: {
+        id: "STU-001",
+        name: "Dawit Bekele",
+        enrollmentDate: polyfill_1.Temporal.Now.instant(),
+        gpa: 3.4
+    },
+    fetchedAt: polyfill_1.Temporal.Now.instant(),
+};
+console.log((0, api_response_model_1.renderResponse)(studentRes, (s) => `${s.name} GPA: ${s.gpa ?? "N/A"}`));
